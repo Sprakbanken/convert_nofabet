@@ -300,7 +300,7 @@ def convert_nofabet(nofabet_transcription, to="sampa"):
                 segs.append(nuc_pattern.match(phone).group(1))
             else:
                 segs.append(phone)
-        if i != len(syllables) - 1:
+        if i != len(syllables) - 1 and segs[-1] != "_":
             segs.append("$")
     if to == "sampa":
         return "".join([NOFABET_TO_SAMPA_MAP[x] for x in segs])
@@ -311,10 +311,7 @@ def convert_nofabet(nofabet_transcription, to="sampa"):
 
 
 if __name__ == "__main__":
-    print(convert_nofabet("B IH2 L IH0 H EE0 T S AEH0 R S T AH3 T N IH0 NG G AX0 N S"))
-    print(
-        convert_nofabet(
-            "B IH2 L IH0 H EE0 T S AEH0 R S T AH3 T N IH0 NG G AX0 N S", to="ipa"
-        )
-    )
+    test = "B IH2 L IH0 H EE0 T S AEH0 R S T AH3 T N IH0 NG G AX0 N S"
+    print(convert_nofabet(test))
+    print(convert_nofabet(test, to="ipa"))
 
