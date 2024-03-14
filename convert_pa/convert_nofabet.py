@@ -284,7 +284,7 @@ def nofabet_to_syllables(transcription):
     return syllables
 
 
-def convert_nofabet(nofabet_transcription, to="sampa"):
+def convert_nofabet_trans(nofabet_transcription, to="sampa"):
     """Convert a NOFABET transcription to X-SAMPA (to='sampa') or IPA (to='ipa')"""
     nuc_pattern = re.compile("([A-Z]+)([0-3])")
     segs = []
@@ -309,9 +309,14 @@ def convert_nofabet(nofabet_transcription, to="sampa"):
     else:
         raise Exception(f"{to} is an unknown standard")
 
+def nofabet_to_sampa(nofabet_transcription):
+    return convert_nofabet_trans(nofabet_transcription, to="sampa")
+
+def nofabet_to_ipa(nofabet_transcription):
+    return convert_nofabet_trans(nofabet_transcription, to="ipa")
 
 if __name__ == "__main__":
     test = "B IH2 L IH0 H EE0 T S AEH0 R S T AH3 T N IH0 NG G AX0 N S"
-    print(convert_nofabet(test))
-    print(convert_nofabet(test, to="ipa"))
+    print(nofabet_to_sampa(test))
+    print(nofabet_to_ipa(test))
 

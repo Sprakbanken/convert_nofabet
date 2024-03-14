@@ -13,26 +13,21 @@ pip install convert-pa
 
 
 ```python
+from convert_pa import nofabet_to_ipa, nofabet_to_sampa, sampa_to_ipa
+
 # Convert from Nofabet
-from convert_pa.convert_nofabet import convert_nofabet
-
-test = "B IH2 L IH0 H EE0 T S AEH0 R S T AH3 T N IH0 NG G AX0 N S"
-
-# to X-SAMPA 
-print(convert_nofabet(test))
-# '""bI$lI$he:t$s{r$%stAt$nIN$g@ns'
+nofabet_transcription = "B IH2 L IH0 H EE0 T S AEH0 R S T AH3 T N IH0 NG G AX0 N S"
 
 # to IPA
-print(convert_nofabet(test, to="ipa"))
+print(nofabet_to_ipa(nofabet_transcription))
 # '"bɪ.lɪ.heːt.sær.ˌstɑt.nɪŋ.gəns'
 
-```
+# to X-SAMPA 
+print(nofabet_to_sampa(nofabet_transcription))
+# '""bI$lI$he:t$s{r$%stAt$nIN$g@ns'
 
-```python 
 # Convert from X-SAMPA to IPA
-from convert_pa.convert_sampa import sampa_to_ipa
-
-transcription = '""On$d@$%lE*u0s'
-print(sampa_to_ipa(transcription))
+sampa_transcription = '""On$d@$%lE*u0s'
+print(sampa_to_ipa(sampa_transcription))
 # "ɔn.də.ˌlæ͡ʉs
 ```
