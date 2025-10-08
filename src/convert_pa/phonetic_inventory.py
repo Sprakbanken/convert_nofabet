@@ -1,7 +1,7 @@
 """
 Module with the phonetic inventory for Norwegian in three phonetic notations:
 X-SAMPA,
-Norwegian phonetic alhpabet (Nofabet),
+Norwegian phonetic alphabet (Nofabet),
 International phonetic alphabet (IPA)
 
 Author: Per Erik Solberg
