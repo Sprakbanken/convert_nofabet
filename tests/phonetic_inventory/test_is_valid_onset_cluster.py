@@ -1,4 +1,4 @@
-import pytest
+import pytest  # type: ignore
 from convert_pa.phonetic_inventory import is_valid_ons_cluster
 
 

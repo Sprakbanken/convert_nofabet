@@ -1,6 +1,5 @@
 """Check data integrity in the dictionaries used for converting between notation standards"""
 
-import pytest
 from convert_pa import phonetic_inventory
 
 
@@ -10,7 +9,7 @@ def test_phonetic_alphabets_map_structure():
     assert "vowels" in phonetic_inventory.PHONETIC_ALPHABETS_MAP
     assert "diphthongs" in phonetic_inventory.PHONETIC_ALPHABETS_MAP
     # Check that each entry is a list of triplets
-    for key, val in phonetic_inventory.PHONETIC_ALPHABETS_MAP.items():
+    for _, val in phonetic_inventory.PHONETIC_ALPHABETS_MAP.items():
         assert isinstance(val, list)
         for triplet in val:
             assert isinstance(triplet, tuple)

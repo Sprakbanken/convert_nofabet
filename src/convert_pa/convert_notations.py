@@ -164,20 +164,3 @@ def nofabet_to_syllables(transcription: str) -> list:
                 ):
                     checkout()
     return syllables
-
-
-def test_conversions():
-    print("SAMPA --> IPA", end="\n\t")
-    sampa_test = '""On$d@$%lE*u0s'  # "Åndeløs"
-    print(sampa_test, "  -->  ", sampa_to_ipa(sampa_test), end="\n\n")
-
-    print("Nofabet --> SAMPA", end="\n\t")
-    # "Billighetserstatningens"
-    nofabet_test = "B IH2 L IH0 H EE0 T S AEH0 R S T AH3 T N IH0 NG G AX0 N S"
-    print(nofabet_test, " --> ", nofabet_to_sampa(nofabet_test), end="\n\t")
-
-    print("Nofabet --> IPA", end="\n\t")
-    print(nofabet_test, " --> ", nofabet_to_ipa(nofabet_test))
-
-    print("Nofabet --> syllable lists", end="\n\t")
-    print(nofabet_test, " --> ", nofabet_to_syllables(nofabet_test))

@@ -1,4 +1,4 @@
-import pytest
+import pytest  # type: ignore
 from convert_pa.convert_notations import sampa_to_ipa
 
 
