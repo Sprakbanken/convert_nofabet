@@ -11,7 +11,7 @@ def test_basic_conversion():
     assert result == sampa_trans
 
 
-def test_empty_input():
+def test_empty_input_returns_empty_output():
     input_trans = ""
     result = nofabet_to_sampa(input_trans)
     assert result == ""

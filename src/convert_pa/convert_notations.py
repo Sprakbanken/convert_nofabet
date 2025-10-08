@@ -67,7 +67,9 @@ def convert_nofabet_trans(nofabet_transcription: str, to: str = "sampa") -> str:
     elif to == "ipa":
         return "".join([NOFABET_TO_IPA_MAP[x] for x in segs])
     else:
-        raise Exception(f"{to} is an unknown standard")
+        raise ValueError(
+            f"`to=` should be either 'ipa' or 'sampa', got unknown notation: {to}"
+        )
 
 
 def nofabet_to_sampa(nofabet_transcription: str) -> str:
