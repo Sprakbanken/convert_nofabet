@@ -1,6 +1,6 @@
 [project]
 name = "convert-pa"
-version = "0.1.1"
+version = "1.0.0"
 description = "Package to convert between transcription standards"
 authors = [
     {name = "Språkbanken", email = "sprakbanken@nb.no"},
@@ -8,7 +8,7 @@ authors = [
 dependencies = []
 requires-python = ">=3.10"
 readme = "README.md"
-license = {text = "CC-BY"}
+license = {text = "CC0"}
 
 [tool.pdm]
 distribution = true
