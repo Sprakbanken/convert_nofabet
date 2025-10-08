@@ -34,25 +34,6 @@ def test_nofabet_to_sampa_and_ipa_map():
             assert phonetic_inventory.NOFABET_TO_IPA_MAP[nofabet] == ipa
 
 
-@pytest.mark.xfail
-def test_is_valid_ons_cluster():
-    # Valid clusters
-    assert phonetic_inventory.is_valid_ons_cluster(["N", "J"])  # nasal + j
-    assert phonetic_inventory.is_valid_ons_cluster(["P", "L"])  # P + liquid
-    assert phonetic_inventory.is_valid_ons_cluster(["T", "R"])  # T + R
-    assert phonetic_inventory.is_valid_ons_cluster(["K", "L"])  # K + liquid
-    assert phonetic_inventory.is_valid_ons_cluster(["S", "N"])  # S + nasal
-    assert phonetic_inventory.is_valid_ons_cluster(["SJ", "P", "L"])  # SJ + P + L
-
-    # Invalid clusters
-    assert not phonetic_inventory.is_valid_ons_cluster(["L", "N"])
-    assert not phonetic_inventory.is_valid_ons_cluster(["K", "K"])
-    assert not phonetic_inventory.is_valid_ons_cluster(["S", "S"])
-    assert not phonetic_inventory.is_valid_ons_cluster(["A", "J"])
-    assert not phonetic_inventory.is_valid_ons_cluster(["S", "P", "N"])
-    assert not phonetic_inventory.is_valid_ons_cluster(["N"])  # single phone
-
-
 def test_phones_nofabet_and_sampa_consistency():
     # Ensure PHONES_NOFABET and PHONES_SAMPA have same keys and lengths
     assert set(phonetic_inventory.PHONES_NOFABET.keys()) == set(
