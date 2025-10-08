@@ -10,6 +10,10 @@ requires-python = ">=3.10"
 readme = "README.md"
 license = {text = "CC0"}
 
+[project.urls]
+Repository = "https://github.com/Sprakbanken/convert_nofabet.git"
+Issues = "https://github.com/Sprakbanken/convert_nofabet/issues"
+
 [tool.pdm]
 distribution = true
 
