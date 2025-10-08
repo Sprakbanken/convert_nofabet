@@ -53,16 +53,17 @@ def convert_nofabet_trans(nofabet_transcription: str, to: str = "ipa") -> str:
     segs = []
     syllables = nofabet_to_syllables(transcription)
     for i, syll in enumerate(syllables):
-        tone = ""
-        for phone in syll:
-            if nuc_pattern.match(phone):
-                tone = nuc_pattern.match(phone).group(2)
-                segs.append(tone)
-        for phone in syll:
-            if nuc_pattern.match(phone):
-                segs.append(nuc_pattern.match(phone).group(1))
-            else:
-                segs.append(phone)
+        # first pass: gather all toneme markers
+        segs += [
+            match_obj.group(2)
+            for phone in syll
+            if (match_obj := nuc_pattern.match(phone))
+        ]
+        # second pass: gather phoneme
+        segs += [
+            match_obj.group(1) if (match_obj := nuc_pattern.match(phone)) else phone
+            for phone in syll
+        ]
         if i != len(syllables) - 1 and segs[-1] != "_":
             segs.append("$")
     if to == "sampa":
