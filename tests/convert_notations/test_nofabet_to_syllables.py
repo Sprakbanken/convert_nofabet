@@ -76,3 +76,9 @@ def test_complex_example():
     ]
     result = nofabet_to_syllables(transcription)
     assert result == expected
+
+
+def test_empty_input_returns_empty_output():
+    input_trans = ""
+    result = nofabet_to_syllables(input_trans)
+    assert result == []

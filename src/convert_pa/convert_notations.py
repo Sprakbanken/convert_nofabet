@@ -44,7 +44,7 @@ def sampa_to_ipa(inputstring):
     return ipastring
 
 
-def convert_nofabet_trans(nofabet_transcription, to="sampa"):
+def convert_nofabet_trans(nofabet_transcription: str, to: str = "sampa") -> str:
     """Convert a NOFABET transcription to X-SAMPA (to='sampa') or IPA (to='ipa')"""
     nuc_pattern = re.compile("([A-Z]+)([0-3])")
     segs = []
@@ -70,16 +70,18 @@ def convert_nofabet_trans(nofabet_transcription, to="sampa"):
         raise Exception(f"{to} is an unknown standard")
 
 
-def nofabet_to_sampa(nofabet_transcription):
+def nofabet_to_sampa(nofabet_transcription: str) -> str:
     return convert_nofabet_trans(nofabet_transcription, to="sampa")
 
 
-def nofabet_to_ipa(nofabet_transcription):
+def nofabet_to_ipa(nofabet_transcription: str) -> str:
     return convert_nofabet_trans(nofabet_transcription, to="ipa")
 
 
-def nofabet_to_syllables(transcription):
+def nofabet_to_syllables(transcription: str) -> list:
     """Convert a nofabet transcription to a list of syllables."""
+    if not transcription:
+        return []
     nuclei = [x + str(i) for i in range(0, 4) for x in PHONES_NOFABET["nuclei"]]
     seglist = transcription.split(" ")
     syllables = []
@@ -171,3 +173,6 @@ def test_conversions():
 
     print("Nofabet --> IPA", end="\n\t")
     print(nofabet_test, " --> ", nofabet_to_ipa(nofabet_test))
+
+    print("Nofabet --> syllable lists", end="\n\t")
+    print(nofabet_test, " --> ", nofabet_to_syllables(nofabet_test))
