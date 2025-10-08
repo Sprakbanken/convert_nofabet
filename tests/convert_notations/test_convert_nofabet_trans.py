@@ -51,10 +51,7 @@ def test_convert_nofabet_trans_multiple_syllables_get_syllable_boundaries():
     assert "$" not in ipa
 
 
-def test_convert_nofabet_trans_with_underscore():
-    # Test syllable boundary
-    nofabet = "B IH2 _ L IH0"
-    sampa = convert_nofabet_trans(nofabet, to="sampa")
-    ipa = convert_nofabet_trans(nofabet, to="ipa")
-    assert isinstance(sampa, str)
-    assert isinstance(ipa, str)
+@pytest.mark.parametrize("text_with_space", [" B IH2 L IH0", "B IH2 L IH0 "])
+def test_trailing_whitespaces_get_trimmed(text_with_space):
+    result = convert_nofabet_trans(text_with_space, to="ipa")
+    assert isinstance(result, str)

@@ -44,11 +44,12 @@ def sampa_to_ipa(inputstring):
     return ipastring
 
 
-def convert_nofabet_trans(nofabet_transcription: str, to: str = "sampa") -> str:
+def convert_nofabet_trans(nofabet_transcription: str, to: str = "ipa") -> str:
     """Convert a NOFABET transcription to X-SAMPA (to='sampa') or IPA (to='ipa')"""
+    transcription = nofabet_transcription.lstrip().rstrip()
     nuc_pattern = re.compile("([A-Z]+)([0-3])")
     segs = []
-    syllables = nofabet_to_syllables(nofabet_transcription)
+    syllables = nofabet_to_syllables(transcription)
     for i, syll in enumerate(syllables):
         tone = ""
         for phone in syll:
