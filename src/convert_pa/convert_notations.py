@@ -31,16 +31,19 @@ def _sampaparser(inputstring):
 
 def sampa_to_ipa(inputstring):
     """Takes an input string in NST-style X-SAMPA and returns an output string in IPA"""
-    parsed = _sampaparser(inputstring)
+    if not inputstring:
+        return ""
+    trimmed = inputstring.replace(" ", "")
+    parsed = _sampaparser(trimmed)
     sampalist = parsed.split(" ")
     ipastring = ""
     for el in sampalist:
-        if el not in fullmapping.keys():
-            sys.exit(
-                f"The input string {inputstring} contains {el}, which is not a defined X-SAMPA segment"
-            )
-        else:
+        try:
             ipastring += fullmapping[el]
+        except KeyError:
+            raise ValueError(
+                f"The input string {inputstring} contains '{el}', which is not a defined X-SAMPA segment"
+            )
     return ipastring
 
 
