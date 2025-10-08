@@ -5,7 +5,6 @@
 # License: Public domain (CC0)
 
 import re
-import sys
 
 from convert_pa.phonetic_inventory import (
     NOFABET_TO_IPA_MAP,
