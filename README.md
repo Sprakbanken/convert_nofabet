@@ -1,11 +1,10 @@
 # Convert Phonetic Alphabets
 
-Python package for converting phonetic or phonemic transcriptions from Nofabet to [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet) and [X-SAMPA](https://en.wikipedia.org/wiki/X-SAMPA), and from X-SAMPA to IPA (original code from https://github.com/peresolb/sampa_to_ipa).
+Python package for converting phonetic or phonemic transcriptions from Nofabet to [IPA](https://en.wikipedia.org/wiki/International_Phonetic_Alphabet) and [X-SAMPA](https://en.wikipedia.org/wiki/X-SAMPA), and from X-SAMPA to IPA (original code from <https://github.com/peresolb/sampa_to_ipa>).
 
+## Installation
 
-## Installation 
-
-```raw
+```shell
 pip install convert-pa
 ```
 
