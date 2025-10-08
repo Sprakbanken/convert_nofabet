@@ -9,11 +9,10 @@ Python package for converting phonetic or phonemic transcriptions from Nofabet t
 pip install convert-pa
 ```
 
-## Usage 
-
+## Usage
 
 ```python
-from convert_pa import nofabet_to_ipa, nofabet_to_sampa, sampa_to_ipa
+from convert_pa import nofabet_to_ipa, nofabet_to_sampa, sampa_to_ipa, nofabet_to_syllables
 
 # Convert from Nofabet
 nofabet_transcription = "B IH2 L IH0 H EE0 T S AEH0 R S T AH3 T N IH0 NG G AX0 N S"
@@ -30,4 +29,9 @@ print(nofabet_to_sampa(nofabet_transcription))
 sampa_transcription = '""On$d@$%lE*u0s'
 print(sampa_to_ipa(sampa_transcription))
 # "ɔn.də.ˌlæ͡ʉs
+
+# Divide a nofabet transcription into syllables (list of lists of phonemes)
+# Word: "Billigsalg"
+nofabet_to_syllables("B IH2 L IH0 S AH1 L G ") 
+# [['B', 'IH2'], ['L', 'IH0'], ['S', 'AH1', 'L', 'G', '']]
 ```
