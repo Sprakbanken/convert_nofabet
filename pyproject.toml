@@ -1,14 +1,18 @@
-[tool.poetry]
+[project]
 name = "convert-pa"
-version = "0.1.0"
+version = "0.1.1"
 description = "Package to convert between transcription standards"
-authors = ["Sprakbanken <sprakbanken@nb.no>"]
+authors = [
+    {name = "Språkbanken", email = "sprakbanken@nb.no"},
+]
+dependencies = []
+requires-python = ">=3.10"
 readme = "README.md"
+license = {text = "CC-BY"}
 
-[tool.poetry.dependencies]
-python = "^3.10"
-
+[tool.pdm]
+distribution = true
 
 [build-system]
-requires = ["poetry-core"]
-build-backend = "poetry.core.masonry.api"
+requires = ["pdm-backend"]
+build-backend = "pdm.backend"
