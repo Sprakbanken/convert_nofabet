@@ -3,13 +3,21 @@ import re
 # Mapping dicts
 
 PHONES = {
-    "s": [("s", "S", "s"),],
-    "h": [("h", "H", "h"),],
-    "j": [("j", "J", "j"),],
+    "s": [("s", "S", "s")],
+    "h": [("h", "H", "h")],
+    "j": [("j", "J", "j")],
     "v": [("v", "V", "v"), ("w", "W", "w")],
-    "ng": [("N", "NG", "ŋ"),],
-    "unvoiced_plosives": [("k", "K", "k"), ("p", "P", "p"), ("t", "T", "t"),],
-    "voiced_plosives": [("b", "B", "b"), ("d", "D", "d"), ("g", "G", "g"),],
+    "ng": [("N", "NG", "ŋ")],
+    "unvoiced_plosives": [
+        ("k", "K", "k"),
+        ("p", "P", "p"),
+        ("t", "T", "t"),
+    ],
+    "voiced_plosives": [
+        ("b", "B", "b"),
+        ("d", "D", "d"),
+        ("g", "G", "g"),
+    ],
     "retroflex_plosives": [("d`", "RD", "ɖ"), ("t`", "RT", "ʈ")],
     "fricatives": [
         ("f", "F", "f"),
@@ -17,8 +25,16 @@ PHONES = {
         ("C", "KJ", "ç"),
         ("s`", "RS", "ʂ"),
     ],
-    "liquids": [("l", "L", "l"), ("r", "R", "r"), ("l`", "RL", "ɭ"),],
-    "nasals": [("m", "M", "m"), ("n", "N", "n"), ("n`", "RN", "ɳ"),],
+    "liquids": [
+        ("l", "L", "l"),
+        ("r", "R", "r"),
+        ("l`", "RL", "ɭ"),
+    ],
+    "nasals": [
+        ("m", "M", "m"),
+        ("n", "N", "n"),
+        ("n`", "RN", "ɳ"),
+    ],
     "long_vowels": [
         ("A:", "AA", "ɑː"),
         ("{:", "AE", "æː"),
@@ -102,15 +118,39 @@ PHONES["consonants"] = [
 ]
 
 PHONES["long_nuclei"] = [
-    x for x in [y for k in ["long_vowels", "diphthongs",] for y in PHONES[k]]
+    x
+    for x in [
+        y
+        for k in [
+            "long_vowels",
+            "diphthongs",
+        ]
+        for y in PHONES[k]
+    ]
 ]
 
 PHONES["short_nuclei"] = [
-    x for x in [y for k in ["short_vowels", "consonant_nuclei",] for y in PHONES[k]]
+    x
+    for x in [
+        y
+        for k in [
+            "short_vowels",
+            "consonant_nuclei",
+        ]
+        for y in PHONES[k]
+    ]
 ]
 
 PHONES["nuclei"] = [
-    x for x in [y for k in ["short_nuclei", "long_nuclei",] for y in PHONES[k]]
+    x
+    for x in [
+        y
+        for k in [
+            "short_nuclei",
+            "long_nuclei",
+        ]
+        for y in PHONES[k]
+    ]
 ]
 
 PHONES["single_onsets"] = [
@@ -228,11 +268,11 @@ def nofabet_to_syllables(transcription):
 
     def context_range(start, end):
         nonlocal seglist
-        l = len(seglist)
+        length = len(seglist)
         if start < 0:
             start = 0
-        if end > l + 1:
-            end = l + 1
+        if end > length + 1:
+            end = length + 1
         return seglist[start:end]
 
     def is_last_syllable(n):
@@ -309,11 +349,14 @@ def convert_nofabet_trans(nofabet_transcription, to="sampa"):
     else:
         raise Exception(f"{to} is an unknown standard")
 
+
 def nofabet_to_sampa(nofabet_transcription):
     return convert_nofabet_trans(nofabet_transcription, to="sampa")
 
+
 def nofabet_to_ipa(nofabet_transcription):
     return convert_nofabet_trans(nofabet_transcription, to="ipa")
+
 
 if __name__ == "__main__":
     test = "B IH2 L IH0 H EE0 T S AEH0 R S T AH3 T N IH0 NG G AX0 N S"
