@@ -362,4 +362,3 @@ if __name__ == "__main__":
     test = "B IH2 L IH0 H EE0 T S AEH0 R S T AH3 T N IH0 NG G AX0 N S"
     print(nofabet_to_sampa(test))
     print(nofabet_to_ipa(test))
-
